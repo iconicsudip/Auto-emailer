@@ -7,6 +7,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { store } from './store'
 import AuthLayout from './layouts/AuthLayout'
 import Auth from './pages/Auth'
+import MainLayout from './layouts/MainLayout'
+import Dashboard from './pages/Dashboard'
+import Emailer from './pages/Emailer'
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -23,6 +26,20 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Auth />
+      }
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: <MainLayout />,
+    children:[
+      {
+        path: '',
+        element: <Dashboard />
+      },
+      {
+        path: 'auto-emailer',
+        element: <Emailer />
       }
     ]
   }
